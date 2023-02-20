@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody snakeRb;
     bool isForward = true;
     [SerializeField] float speed = 8.0f;
+    [SerializeField] private GameObject winScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,11 @@ public class PlayerController : MonoBehaviour
             score++;
             growBody();
             Instantiate(body);
+            if(score > 199)
+            {
+                Time.timeScale = 0f;
+                winScreen.SetActive(true);
+            }
             
         }
 
@@ -116,32 +122,30 @@ public class PlayerController : MonoBehaviour
     void changeSnakeDirection(){
 
 
-    if(isForward == false){    
+        if(isForward == false){    
 
-        if(Input.GetKeyDown(KeyCode.W)){
-            direction = 1;
-            GetComponent<Renderer>().material.color = new Color32(0,40,0,50);
+            if(Input.GetKeyDown(KeyCode.W)){
+                direction = 1;
+                GetComponent<Renderer>().material.color = new Color32(0,40,0,50);
             
+            }
+ 
+            else if(Input.GetKeyDown(KeyCode.S)){
+                direction = 2;
+                GetComponent<Renderer>().material.color = new Color32(40,255,165,0);
+            }
         }
-        //
-        else if(Input.GetKeyDown(KeyCode.S)){
-            direction = 2;
-            GetComponent<Renderer>().material.color = new Color32(40,255,165,0);
+        if(isForward == true){
+            if(Input.GetKeyDown(KeyCode.A)){
+                direction = 3;
+                GetComponent<Renderer>().material.color = new Color32(255,140,0,60);
+            }
+            else if(Input.GetKeyDown(KeyCode.D)){
+                direction = 4;
+                GetComponent<Renderer>().material.color = new Color32(255,69,0,90);
+            }
         }
-    }
-    if(isForward == true){
-        if(Input.GetKeyDown(KeyCode.A)){
-            direction = 3;
-            GetComponent<Renderer>().material.color = new Color32(255,140,0,60);
-        }
-        else if(Input.GetKeyDown(KeyCode.D)){
-            direction = 4;
-            GetComponent<Renderer>().material.color = new Color32(255,69,0,90);
-        }
-    }
-       
-        
-        
+           
     }
 
 }

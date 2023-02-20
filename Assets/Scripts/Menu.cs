@@ -16,4 +16,10 @@ public class Menu : MonoBehaviour
         Application.Quit();
     }
 
+    public void Reset()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }

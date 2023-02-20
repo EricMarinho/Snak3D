@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class SpawnFood : MonoBehaviour
 {
-    //
+    //Singleton
+
+    public static SpawnFood instance;
+    
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
     public GameObject fruta;
     Vector3 LastFruitPosition;
 
@@ -12,7 +23,6 @@ public class SpawnFood : MonoBehaviour
     void Start()
     {
         FoodSpawner();
-        
     }
 
     // Update is called once per frame
