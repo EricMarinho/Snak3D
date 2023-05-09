@@ -8,6 +8,7 @@ TagManager:
   - Contador
   - Damage
   - Head
+  - Button
   layers:
   - Default
   - TransparentFX

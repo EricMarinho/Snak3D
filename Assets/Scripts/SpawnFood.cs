@@ -19,17 +19,11 @@ public class SpawnFood : MonoBehaviour
     public GameObject fruta;
     Vector3 LastFruitPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         FoodSpawner();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-                
-    }
 
     public void FoodSpawner(){
 
@@ -53,8 +47,7 @@ public class SpawnFood : MonoBehaviour
                 continue;
                 
             }
-                
-                
+     
         }
 
     }

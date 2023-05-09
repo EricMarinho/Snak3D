@@ -9,7 +9,6 @@ public class SpawnCheck : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Damage"))
         {
-            Debug.Log("EITAAAAAAAA");
             SpawnFood.instance.FoodSpawner();
             Destroy(gameObject);
         }

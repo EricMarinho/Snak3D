@@ -6,25 +6,27 @@ using TMPro;
 using System;
 public class ScoreScript : MonoBehaviour
 {
-    //
+
     public PlayerController player;
-    TMP_Text ScoreText;
-    // Start is called before the first frame update
-    void Start(){
-       ScoreText = gameObject.GetComponent<TMP_Text>(); 
-        
-        Debug.Log(ScoreText);
-    }
+    TMP_Text scoreText;
 
-
-
-    // Update is called once per frame
-    void Update()
+    public static ScoreScript instance;
+    void Awake()
     {
-         if(Int32.Parse(ScoreText.text)!=player.score){
-            ScoreText.text = "" + player.score;
-         
-         }
-         
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        scoreText = gameObject.GetComponent<TMP_Text>();
     }
+
+    public void UpdateScore(int score)
+    {
+        scoreText.SetText("Score: " + score.ToString());
+    }
+
 }
