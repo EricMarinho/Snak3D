@@ -41,7 +41,7 @@ public class StartGameHandler : MonoBehaviour
         PlayerController.instance.enabled = true;
         audioButton.SetActive(false);
         pauseButton.SetActive(true);
-        runButton.SetActive(true);
+        //runButton.SetActive(true);
         startGameCounterText.gameObject.SetActive(false);
     }
 }

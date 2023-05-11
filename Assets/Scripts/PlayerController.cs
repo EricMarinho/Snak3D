@@ -63,11 +63,24 @@ public class PlayerController : MonoBehaviour
 
         HandleLight();
         changeSnakeDirection();
+        SnakeRun();
 
         if(contador >= speedTime){
             moveSnake();
             updateHistory();
             contador = 0f;
+        }
+    }
+
+    private void SnakeRun()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpeedUP();
+        }
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            SpeedDown();
         }
     }
 
@@ -151,90 +164,90 @@ public class PlayerController : MonoBehaviour
 
     void changeSnakeDirection(){
 
-        //if (isForward == false)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.W))
-        //    {
-        //        direction = 1;
-        //        GetComponent<Renderer>().material.color = new Color32(0, 40, 0, 50);
-
-        //    }
-        //    else if (Input.GetKeyDown(KeyCode.S))
-        //    {
-        //        direction = 2;
-        //        GetComponent<Renderer>().material.color = new Color32(40, 255, 165, 0);
-        //    }
-        //}
-        //else
-        //{
-        //    if(Input.GetKeyDown(KeyCode.A)){
-        //            direction = 3;
-        //            GetComponent<Renderer>().material.color = new Color32(255,140,0,60);
-        //    }
-        //        else if(Input.GetKeyDown(KeyCode.D)){
-        //            direction = 4;
-        //            GetComponent<Renderer>().material.color = new Color32(255,69,0,90);
-        //        }
-
-        //}
-
-        var validTouches = Input.touches.Where(touch => !EventSystem.current.IsPointerOverGameObject(touch.fingerId)).ToArray();
-
-        if (validTouches.Length > 0)
+        if (isForward == false)
         {
-
-            if (validTouches[0].phase == TouchPhase.Began)
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                startTouchPosition = validTouches[0].position;
+                direction = 1;
+                GetComponent<Renderer>().material.color = new Color32(0, 40, 0, 50);
+
             }
-
-            if (validTouches[0].phase == TouchPhase.Ended)
+            else if (Input.GetKeyDown(KeyCode.S))
             {
-                endTouchPosition = validTouches[0].position;
-
-                if (endTouchPosition.x > Screen.width * 0.8f && endTouchPosition.y < Screen.height * 0.2f)
-                    return;
-
-                float x = endTouchPosition.x - startTouchPosition.x;
-                float y = endTouchPosition.y - startTouchPosition.y;
-
-                if (isForward == true)
-                {
-                    if (Mathf.Abs(x) > Mathf.Abs(y))
-                    {
-                        if (x > 0)
-                        {
-                            if (endTouchPosition.x > Screen.width * 0.70f && endTouchPosition.y < Screen.height * 0.2f)
-                                return;
-
-                            direction = 4;
-                            GetComponent<Renderer>().material.color = new Color32(255, 69, 0, 90);
-                        }
-                        else
-                        {
-                            direction = 3;
-                            GetComponent<Renderer>().material.color = new Color32(255, 140, 0, 60);
-                        }
-                    }
-                }
-                else
-                {
-                    if (Mathf.Abs(x) < Mathf.Abs(y))
-                    {
-                        if (y > 0)
-                        {
-                            direction = 1;
-                            GetComponent<Renderer>().material.color = new Color32(0, 40, 0, 50);
-                        }
-                        else
-                        {
-                            direction = 2;
-                            GetComponent<Renderer>().material.color = new Color32(40, 255, 165, 0);
-                        }
-                    }
-                }
+                direction = 2;
+                GetComponent<Renderer>().material.color = new Color32(40, 255, 165, 0);
             }
         }
+        else
+        {
+            if(Input.GetKeyDown(KeyCode.A)){
+                    direction = 3;
+                    GetComponent<Renderer>().material.color = new Color32(255,140,0,60);
+            }
+                else if(Input.GetKeyDown(KeyCode.D)){
+                    direction = 4;
+                    GetComponent<Renderer>().material.color = new Color32(255,69,0,90);
+                }
+
+        }
+
+        //var validTouches = Input.touches.Where(touch => !EventSystem.current.IsPointerOverGameObject(touch.fingerId)).ToArray();
+
+        //if (validTouches.Length > 0)
+        //{
+
+        //    if (validTouches[0].phase == TouchPhase.Began)
+        //    {
+        //        startTouchPosition = validTouches[0].position;
+        //    }
+
+        //    if (validTouches[0].phase == TouchPhase.Ended)
+        //    {
+        //        endTouchPosition = validTouches[0].position;
+
+        //        if (endTouchPosition.x > Screen.width * 0.8f && endTouchPosition.y < Screen.height * 0.2f)
+        //            return;
+
+        //        float x = endTouchPosition.x - startTouchPosition.x;
+        //        float y = endTouchPosition.y - startTouchPosition.y;
+
+        //        if (isForward == true)
+        //        {
+        //            if (Mathf.Abs(x) > Mathf.Abs(y))
+        //            {
+        //                if (x > 0)
+        //                {
+        //                    if (endTouchPosition.x > Screen.width * 0.70f && endTouchPosition.y < Screen.height * 0.2f)
+        //                        return;
+
+        //                    direction = 4;
+        //                    GetComponent<Renderer>().material.color = new Color32(255, 69, 0, 90);
+        //                }
+        //                else
+        //                {
+        //                    direction = 3;
+        //                    GetComponent<Renderer>().material.color = new Color32(255, 140, 0, 60);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (Mathf.Abs(x) < Mathf.Abs(y))
+        //            {
+        //                if (y > 0)
+        //                {
+        //                    direction = 1;
+        //                    GetComponent<Renderer>().material.color = new Color32(0, 40, 0, 50);
+        //                }
+        //                else
+        //                {
+        //                    direction = 2;
+        //                    GetComponent<Renderer>().material.color = new Color32(40, 255, 165, 0);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     private IEnumerator OnSnakeEat()
