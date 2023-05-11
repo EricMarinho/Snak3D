@@ -1,6 +1,7 @@
 # Snak3D Frenzy
 <img align="right" src="https://img.itch.zone/aW1nLzEyMTM3MTEwLnBuZw==/315x250%23c/inY0cp.png" width= 200/>
-Snak3D Frenzy, is a demo concept made with in collaboration [Italo](https://github.com/ItaloScript).
+
+Snak3D Frenzy, is a demo concept made in collaboration with [Italo](https://github.com/ItaloScript)
 
 It's free and open source. :clap:
 
