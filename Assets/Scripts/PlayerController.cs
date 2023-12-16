@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private Vector2[] startTouchPositions;
     private Vector2[] endTouchPositions;
     private bool[] touchInProgress;
+    private Renderer renderer;
 
     private void Awake()
     {
@@ -58,7 +59,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        renderer = GetComponent<Renderer>();
         snakeRb = GetComponent<Rigidbody>();
+
         arrayBody.Add(new Vector3(0, 0, 0));
 
         startTouchPositions = new Vector2[5];
@@ -264,13 +267,13 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("Turn right");
                     direction = 4;
-                    GetComponent<Renderer>().material.color = new Color32(255, 69, 0, 90);
+                    renderer.material.color = new Color32(255, 69, 0, 90);
                 }
                 else
                 {
                     Debug.Log("Turn left");
                     direction = 3;
-                    GetComponent<Renderer>().material.color = new Color32(255, 140, 0, 60);
+                    renderer.material.color = new Color32(255, 140, 0, 60);
                 }
             }
         }
@@ -282,13 +285,13 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("Turn up");
                     direction = 1;
-                    GetComponent<Renderer>().material.color = new Color32(0, 40, 0, 50);
+                    renderer.material.color = new Color32(0, 40, 0, 50);
                 }
                 else
                 {
                     Debug.Log("Turn down");
                     direction = 2;
-                    GetComponent<Renderer>().material.color = new Color32(40, 255, 165, 0);
+                    renderer.material.color = new Color32(40, 255, 165, 0);
 
                     Debug.Log("Swipe detected: " + direction);
 
