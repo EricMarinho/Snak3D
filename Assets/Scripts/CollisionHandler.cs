@@ -24,8 +24,10 @@ public class CollisionHandler : MonoBehaviour
             pauseButton.SetActive(false);
             runButton.SetActive(false);
             PlayerController.instance.enabled = false;
-            //InterstitialAds.Instance.ShowAd();
-            
+#if UNITY_ANDROID
+            if (InterstitialAds.Instance == null) return;
+                InterstitialAds.Instance.ShowAd();
+#endif
         }
     }
 
